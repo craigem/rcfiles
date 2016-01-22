@@ -1,3 +1,4 @@
+" Preferred global default settings:
 set number
 set background=dark
 set smartindent
@@ -7,7 +8,8 @@ set expandtab
 set spell spelllang=en_au
 syntax enable
 match ErrorMsg '\s\+$'
-" Removes trailing spaces
+
+" Removes trailing spaces:
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
@@ -18,8 +20,10 @@ autocmd FileAppendPre   * :call TrimWhiteSpace()
 autocmd FilterWritePre  * :call TrimWhiteSpace()
 autocmd BufWritePre     * :call TrimWhiteSpace()
 
+" Add files ending in md to the list of files recognised as markdown:
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
+" Settings for my Haskell environment:
 function! HaskellSettings()
     set tabstop=8
     set shiftwidth=8
@@ -27,6 +31,7 @@ function! HaskellSettings()
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.hs :call HaskellSettings()
 
+" Settings for my Golang environment:
 function! GoSettings()
     set tabstop=7
     set shiftwidth=7
@@ -34,6 +39,7 @@ function! GoSettings()
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.go :call GoSettings()
 
+" Settings for my Python environment:
 function! PythonSettings()
     set tabstop=4
     set shiftwidth=4
