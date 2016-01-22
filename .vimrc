@@ -45,5 +45,6 @@ function! PythonSettings()
     set shiftwidth=4
     set expandtab
     set textwidth=79
+    set spell!
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.py :call PythonSettings()
