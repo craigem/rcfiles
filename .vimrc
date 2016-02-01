@@ -23,6 +23,12 @@ autocmd BufWritePre     * :call TrimWhiteSpace()
 " Add files ending in md to the list of files recognised as markdown:
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
+" My Markdown environment
+function! MarkdownSettings()
+    set textwidth=79
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead *.mdwn :call MarkdownSettings()
+
 " Settings for my Haskell environment:
 function! HaskellSettings()
     set tabstop=8
