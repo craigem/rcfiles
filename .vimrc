@@ -5,7 +5,6 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set spell spelllang=en_au
 syntax enable
 match ErrorMsg '\s\+$'
 
@@ -26,12 +25,14 @@ autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " My Markdown environment
 function! MarkdownSettings()
     set textwidth=79
+    set spell spelllang=en_au
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.mdwn :call MarkdownSettings()
 
 " My ReStructured Text environment
 function! ReStructuredSettings()
     set textwidth=79
+    set spell spelllang=en_au
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.rst :call ReStructuredSettings()
 
