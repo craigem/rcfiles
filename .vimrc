@@ -29,6 +29,12 @@ function! MarkdownSettings()
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.mdwn :call MarkdownSettings()
 
+" My ReStructured Text environment
+function! ReStructuredSettings()
+    set textwidth=79
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead *.rst :call ReStructuredSettings()
+
 " Settings for my Haskell environment:
 function! HaskellSettings()
     set tabstop=8
