@@ -38,9 +38,10 @@ autocmd BufNewFile,BufFilePre,BufRead *.rst :call ReStructuredSettings()
 
 " Settings for my Haskell environment:
 function! HaskellSettings()
-    set tabstop=8
-    set shiftwidth=8
+    set tabstop=4
+    set shiftwidth=4
     set expandtab
+    set textwidth=79
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.hs :call HaskellSettings()
 
