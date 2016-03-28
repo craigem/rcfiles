@@ -36,6 +36,13 @@ function! ReStructuredSettings()
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.rst :call ReStructuredSettings()
 
+" My LaTeX environment:
+function! LaTeXSettings()
+    set textwidth=79
+    set spell spelllang=en_au
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead *.tex :call LaTeXSettings()
+
 " Settings for my Haskell environment:
 function! HaskellSettings()
     set tabstop=4
