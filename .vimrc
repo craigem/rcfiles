@@ -8,6 +8,12 @@ set expandtab
 syntax enable
 match ErrorMsg '\s\+$'
 
+" Set up the status line so it's colored and always on
+set laststatus=2
+highlight StatusLine cterm=none ctermbg=black ctermfg=green
+highlight StatusLineNC cterm=none ctermbg=black ctermfg=green
+highlight VertSplit cterm=none ctermbg=black ctermfg=green
+
 " Removes trailing spaces:
 function! TrimWhiteSpace()
     %s/\s\+$//e
