@@ -10,9 +10,9 @@ match ErrorMsg '\s\+$'
 
 " Set up the status line so it's colored and always on
 set laststatus=2
-highlight StatusLine cterm=none ctermbg=black ctermfg=green
-highlight StatusLineNC cterm=none ctermbg=black ctermfg=green
-highlight VertSplit cterm=none ctermbg=black ctermfg=green
+highlight StatusLine cterm=none ctermbg=darkgreen ctermfg=black
+highlight StatusLineNC cterm=none ctermbg=darkgreen ctermfg=black
+highlight VertSplit cterm=none ctermbg=darkgreen ctermfg=black
 
 " Removes trailing spaces:
 function! TrimWhiteSpace()
