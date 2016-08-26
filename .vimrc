@@ -5,7 +5,9 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set t_Co=256            " use 265 colors in vim
 syntax enable
+colorscheme solarized
 match ErrorMsg '\s\+$'
 
 " Set up the status line so it's colored and always on
@@ -101,3 +103,14 @@ function! PythonSettings()
     set spell!
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.py :call PythonSettings()
+
+" My Mutt environment
+function! MuttSettings()
+    set textwidth=79
+    set spell spelllang=en_au
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead mutt-* :call MarkdownSettings()
+
