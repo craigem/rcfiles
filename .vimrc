@@ -69,6 +69,7 @@ function! ReStructuredSettings()
     set spell spelllang=en_au
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.rst :call ReStructuredSettings()
+autocmd BufNewFile,BufFilePre,BufRead *.txt :call ReStructuredSettings()
 
 " My LaTeX environment:
 function! LaTeXSettings()
@@ -113,4 +114,13 @@ function! MuttSettings()
     set expandtab
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead mutt-* :call MarkdownSettings()
+
+" Settings for my C environment:
+function! CSettings()
+    set tabstop=2
+    set shiftwidth=2
+    set expandtab
+    set textwidth=79
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead *.c :call CSettings()
 
