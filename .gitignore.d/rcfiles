@@ -1,0 +1,15 @@
+*
+!/.ghc/
+!/.ghc/ghci.conf
+!/.mpd
+!/.mpd/mpd.conf
+!/.ncmpcpp
+!/.ncmpcpp/config
+!/.vim
+!/.vim/colors
+!/.vim/colors/solarized.vim
+!/.vimrc
+!/.xmobarrc
+!/.xmonad
+!/.xmonad/xmonad.hs
+!/.xscreensaver
