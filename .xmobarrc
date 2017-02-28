@@ -2,8 +2,8 @@ Config {
 
     -- Appearance
       font = "xft:OpenSans:size=10:antialias=true"
-    , bgColor = "black"
-    , fgColor = "grey"
+    , bgColor = "#073642"
+    , fgColor = "#93a1a1"
     , position = TopW L 90
 
     -- Layout
@@ -21,18 +21,18 @@ Config {
         [ Run MultiCpu       [ "--template" , "CPU: <total0>%|<total2>%"
                              , "--Low"      , "30"         -- units: %
                              , "--High"     , "70"         -- units: %
-                             , "--low"      , "lightblue"
-                             , "--normal"   , "green"
-                             , "--high"     , "red"
+                             , "--low"      , "#2aa198"
+                             , "--normal"   , "#859900"
+                             , "--high"     , "#dc322f"
                              ] 10
 
         -- cpu core temperature monitor
         , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
                              , "--Low"      , "30"        -- units: °C
                              , "--High"     , "80"        -- units: °C
-                             , "--low"      , "lightblue"
-                             , "--normal"   , "green"
-                             , "--high"     , "red"
+                             , "--low"      , "#2aa198"
+                             , "--normal"   , "#859900"
+                             , "--high"     , "#dc322f"
                              ] 50
 
         -- CPU Frequency
@@ -43,26 +43,26 @@ Config {
         , Run Memory         [ "--template" , "MEM <usedratio>%"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
-                             , "--low"      , "lightblue"
-                             , "--normal"   , "green"
-                             , "--high"     , "red"
+                             , "--low"      , "#2aa198"
+                             , "--normal"   , "#859900"
+                             , "--high"     , "#dc322f"
                              ] 10
 
         -- Battery Monitor
         , Run Battery        [ "--template" , "BAT: <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
-                             , "--low"      , "red"
-                             , "--normal"   , "green"
-                             , "--high"     , "lightblue"
+                             , "--low"      , "#dc322f"
+                             , "--normal"   , "#859900"
+                             , "--high"     , "#2aa198"
 
                              , "--" -- battery specific options
                                        -- discharging status
                                        , "-o"   , "<left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O" , "<fc=#FFA500>Charging</fc>"
+                                       , "-O" , "<fc=#2aa198>Charging</fc>"
                                        -- charged status
-                                       , "-i"   , "<fc=#ADD8E6>Charged</fc>"
+                                       , "-i"   , "<fc=#859900>Charged</fc>"
                              ] 50
 
         -- Read from STDIN
@@ -72,21 +72,21 @@ Config {
         , Run Weather "YBRK" [ "--template" , " <tempC>°C"
                              , "--Low"      , "10"
                              , "--High"     , "35"
-                             , "--low"      , "lightblue"
-                             , "--normal"   , "green"
-                             , "--high"     , "red"
+                             , "--low"      , "#2aa198"
+                             , "--normal"   , "#859900"
+                             , "--high"     , "#dc322f"
                              ] 36000
 
         -- Network Activity Monitor
         , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
                              , "--Low"      , "1000"       -- units: kB/s
                              , "--High"     , "5000"       -- units: kB/s
-                             , "--low"      , "lightblue"
-                             , "--normal"   , "green"
-                             , "--high"     , "red"
+                             , "--low"      , "#2aa198"
+                             , "--normal"   , "#859900"
+                             , "--high"     , "#dc322f"
                              ] 10
 
         -- Time and Date Display
-        , Run Date           "<fc=#ee9a00>%a %b %_d %H:%M</fc>" "date" 10
+        , Run Date           "<fc=#268bd2>%a %b %_d %H:%M</fc>" "date" 10
         ]
 }

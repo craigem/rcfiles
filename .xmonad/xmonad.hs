@@ -15,7 +15,10 @@ main = do
                 , layoutHook = avoidStruts $ layoutHook defaultConfig
                 , logHook = dynamicLogWithPP $ xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        , ppCurrent = xmobarColor "#859900" "" . wrap "[" "]"
+                        , ppVisible = xmobarColor "#2aa198" "" . wrap "(" ")"
+                        , ppLayout = xmobarColor "#2aa198" ""
+                        , ppTitle = xmobarColor "#859900" "" . shorten 50
                         }
                 , modMask = mod4Mask -- Rebind Mod to the Windows key
                 --, borderWidth = 1
