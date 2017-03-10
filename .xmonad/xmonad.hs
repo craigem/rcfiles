@@ -23,8 +23,10 @@ main = do
                 , modMask = mod4Mask -- Rebind Mod to the Windows key
                 --, borderWidth = 1
                 } `additionalKeys`
+                        -- Custom dmenu launcher
+                        [ ((mod4Mask, xK_p ), spawn "exe=`dmenu_path | dmenu -fn \"Open Sans-10\" -p \"λ:\" -nb \"#073642\" -nf \"#93a1a1\" -sb \"#002b36\" -sf \"#859900\"` && eval \"exec $exe\"")
                         -- Lock the screen
-                        [ ((0, 0x1008ff2d), spawn "xscreensaver-command -lock")
+                        , ((0, 0x1008ff2d), spawn "xscreensaver-command -lock")
                         -- XF86ScreenSaver
                         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
                         , ((0, xK_Print), spawn "scrot")
