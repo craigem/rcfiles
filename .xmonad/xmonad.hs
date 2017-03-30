@@ -33,13 +33,13 @@ main = do
                         -- Turn off the display port
                         , ((mod4Mask, xK_d), spawn "/usr/bin/xrandr --output DP-1 --off")
                         -- Turn on the display port and set it as the primary display
-                        , ((mod4Mask .|. shiftMask, xK_d), spawn "/usr/bin/xrandr --output DP-1 --primary ; /usr/bin/xrandr --output LVDS-1 --mode 1280x800; /usr/bin/xrandr --output DP-1 --mode 2560x1440; /usr/bin/xrandr --output DP-1 --left-of LVDS-1")
+                        , ((mod4Mask .|. shiftMask, xK_d), spawn "/usr/bin/xrandr --output LVDS-1 --primary --auto --output DP-1 --left-of LVDS-1 --auto")
                         -- Turn off the HDMI port
                         , ((mod4Mask .|. controlMask, xK_h), spawn "/usr/bin/xrandr --output HDMI-1 --off")
                         -- Turn on the HDMI port and set it as the primary display
-                        , ((mod4Mask .|. shiftMask, xK_h), spawn "/usr/bin/xrandr --output HDMI-1 --primary ; /usr/bin/xrandr --output LVDS-1 --mode 1280x800; /usr/bin/xrandr --output HDMI-1 --mode 1600x900; /usr/bin/xrandr --output HDMI-1 --left-of LVDS-1")
+                        , ((mod4Mask .|. shiftMask, xK_h), spawn "/usr/bin/xrandr --output LVDS-1 --primary --auto --output HDMI-1 --left-of LVDS-1 --auto")
                         , ((mod4Mask, xK_v), spawn "/usr/bin/xrandr --output VGA-1 --off")
-                        , ((mod4Mask .|. shiftMask, xK_v), spawn " /usr/bin/xrandr --output VGA-1 --primary ; /usr/bin/xrandr --output LVDS-1 --mode 1280x800; /usr/bin/xrandr --output VGA-1 --mode 1600x900; /usr/bin/xrandr --output VGA-1 --left-of LVDS-1")
+                        , ((mod4Mask .|. shiftMask, xK_v), spawn "/usr/bin/xrandr --output LVDS-1 --primary --auto --output VGA-1 --left-of LVDS-1 --auto")
                         , ((0 , 0x1008FF11), spawn "amixer set Master 2%-") -- XF86AudioLowerVolume
                         , ((0 , 0x1008FF12), spawn "amixer set Master toggle") -- XF86AudioMute
                         , ((0 , 0x1008FF13), spawn "amixer set Master 2%+") -- XF86AudioRaiseVolume
