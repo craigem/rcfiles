@@ -9,7 +9,7 @@ Config {
     -- Layout
     , sepChar = "%"
     , alignSep = "}{"
-    , template = "%StdinReader% }{ %multicpu% %coretemp% %cpufreq% | %memory% | %dynnetwork% | %battery% | %YBRK% | %date%"
+    , template = "%StdinReader% }{ %multicpu% %coretemp% %cpufreq% | %memory% | %dynnetwork% | %battery% | %YBRK% %uv brisbane% | %date%"
 
     -- Behaviour
     , lowerOnStart = False
@@ -88,5 +88,12 @@ Config {
 
         -- Time and Date Display
         , Run Date           "<fc=#268bd2>%a %b %_d %H:%M</fc>" "date" 10
+
+        -- Display the current UV
+        , Run UVMeter "brisbane" [ "-H"     , "3"
+                                 , "-L"     , "3"
+                                 , "--low"  , "#859900"
+                                 , "--high" , "#dc322f"
+                                 ] 900
         ]
 }
