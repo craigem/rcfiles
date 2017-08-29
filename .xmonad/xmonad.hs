@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
@@ -8,11 +9,11 @@ import System.IO
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar /home/craige/.xmobarrc"
     -- Launch xmobar as my task bar.
-    xmonad $ defaultConfig
+    xmonad $ desktopConfig
         { focusFollowsMouse = False
         , terminal = "terminology"
-        , manageHook = manageDocks <+> manageHook defaultConfig
-        , layoutHook = avoidStruts $ layoutHook defaultConfig
+        , manageHook = manageDocks <+> manageHook desktopConfig
+        , layoutHook = avoidStruts $ layoutHook desktopConfig
         , logHook = dynamicLogWithPP $ xmobarPP
             { ppOutput = hPutStrLn xmproc
             , ppCurrent = xmobarColor "#859900" "" . wrap "[" "]"
@@ -48,7 +49,7 @@ main = do
             -- Turn on the HDMI port and set it as the primary display
             , ((mod4Mask .|. shiftMask, xK_h), spawn
                 " /usr/bin/xrandr --output LVDS-1 --primary --auto --output \
-                \ HDMI-1 --left-of LVDS-1 --auto"
+                \ HDMI-1 --right-of LVDS-1 --auto"
                 )
             -- Turn off the VGA port
             , ((mod4Mask, xK_v), spawn "/usr/bin/xrandr --output VGA-1 --off")
