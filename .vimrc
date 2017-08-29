@@ -62,6 +62,7 @@ function! MarkdownSettings()
     set spell spelllang=en_au
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.mdwn :call MarkdownSettings()
+autocmd BufNewFile,BufFilePre,BufRead *.md :call MarkdownSettings()
 
 " My ReStructured Text environment
 function! ReStructuredSettings()
