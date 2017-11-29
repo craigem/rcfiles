@@ -1,0 +1,8 @@
+[user]
+	name = Craige McWhirter
+	email = craige@mcwhirter.io
+	signingkey = B41FA6FF04CE4B93
+[push]
+	default = simple
+[gitreview]
+	username = craige
