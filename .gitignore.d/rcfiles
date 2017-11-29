@@ -1,4 +1,5 @@
 *
+!/.config/
 !/.ghc/
 !/.ghc/ghci.conf
 !/.mpd
