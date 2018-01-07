@@ -8,6 +8,7 @@ import System.IO
 
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar /home/craige/.xmobarrc"
+    spawn "/usr/lib/notification-daemon/notification-daemon"
     -- Launch xmobar as my task bar.
     xmonad $ desktopConfig
         { focusFollowsMouse = False
@@ -56,7 +57,7 @@ main = do
             -- Turn on the VGA port and set it as the primary display
             , ((mod4Mask .|. shiftMask, xK_v), spawn
                 " /usr/bin/xrandr --output LVDS-1 --primary --auto --output \
-                \ VGA-1 --left-of LVDS-1 --auto"
+                \ VGA-1 --right-of LVDS-1 --auto"
                 )
             , ((0 , 0x1008FF11), spawn
                 "amixer set Master 2%-") -- XF86AudioLowerVolume
