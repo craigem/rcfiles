@@ -125,3 +125,11 @@ function! CSettings()
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.c :call CSettings()
 
+" Settings for my YAML environment:
+function! YAMLSettings()
+    set tabstop=2
+    set shiftwidth=2
+    set expandtab
+    set textwidth=79
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead *.yaml :call YAMLSettings()
