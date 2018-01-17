@@ -134,7 +134,7 @@ function! YAMLSettings()
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.yaml :call YAMLSettings()
 
-" Settings for my Python environment:
+" Settings for my Bash environment:
 function! BashSettings()
     set tabstop=4
     set shiftwidth=4
@@ -143,3 +143,13 @@ function! BashSettings()
     set spell!
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.sh :call BashSettings()
+
+" My Bzr commit environment
+function! BzrSettings()
+    set textwidth=79
+    set spell spelllang=en_au
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead bzr_* :call BzrSettings()
