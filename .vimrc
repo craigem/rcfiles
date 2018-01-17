@@ -114,7 +114,7 @@ function! MuttSettings()
     set shiftwidth=4
     set expandtab
 endfunction
-autocmd BufNewFile,BufFilePre,BufRead mutt-* :call MarkdownSettings()
+autocmd BufNewFile,BufFilePre,BufRead mutt-* :call MuttSettings()
 
 " Settings for my C environment:
 function! CSettings()
@@ -133,3 +133,13 @@ function! YAMLSettings()
     set textwidth=79
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead *.yaml :call YAMLSettings()
+
+" Settings for my Python environment:
+function! BashSettings()
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+    set textwidth=79
+    set spell!
+endfunction
+autocmd BufNewFile,BufFilePre,BufRead *.sh :call BashSettings()
