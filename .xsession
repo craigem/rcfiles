@@ -5,5 +5,5 @@ exec /usr/bin/nm-applet &
 exec /usr/bin/owncloud &
 exec /usr/bin/mpd &
 exec /usr/bin/xscreensaver -no-splash &
-exec /usr/bin/feh --bg-scale ~/Documents/Images/Posters/PorpoiseGalaxy_HubbleFraile_1300.jpg &
+exec /usr/bin/feh --bg-scale ~/Documents/Images/Posters/meteor2017event4299_Taylor.jpg
 exec /usr/bin/xmonad
