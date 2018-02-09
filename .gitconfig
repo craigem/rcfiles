@@ -6,3 +6,6 @@
 	default = simple
 [gitreview]
 	username = craige
+
+[url "git+ssh://USER@git.launchpad.net/"]
+    insteadof = lp:
