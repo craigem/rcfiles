@@ -49,7 +49,7 @@ Config {
                              ] 10
 
         -- Battery Monitor
-        , Run Battery        [ "--template" , "BAT: <acstatus>"
+        , Run BatteryP ["BAT"]        [ "--template" , "BAT: <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "#dc322f"
@@ -57,12 +57,12 @@ Config {
                              , "--high"     , "#2aa198"
 
                              , "--" -- battery specific options
-                                       -- discharging status
-                                       , "-o"   , "<left>% (<timeleft>)"
-                                       -- AC "on" status
-                                       , "-O" , "<fc=#2aa198>Charging</fc>"
-                                       -- charged status
-                                       , "-i"   , "<fc=#859900>Charged</fc>"
+                             -- discharging status
+                             , "-o"   , "<left>% (<timeleft>)"
+                             -- AC "on" status
+                             , "-O" , "<fc=#2aa198>Charging</fc>"
+                             -- charged status
+                             , "-i"   , "<fc=#859900>Charged</fc>"
                              ] 50
 
         -- Read from STDIN
