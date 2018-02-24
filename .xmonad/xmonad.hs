@@ -34,30 +34,21 @@ main = do
             -- Lock the screen
             , ((0, 0x1008ff2d), spawn "xscreensaver-command -lock")
             -- XF86ScreenSaver
+            , ((mod4Mask .|. controlMask, xK_l), spawn "xscreensaver-command -lock")
             , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
             , ((0, xK_Print), spawn "scrot")
-            -- Turn off the display port
-            , ((mod4Mask, xK_d), spawn "/usr/bin/xrandr --output DP-1 --off")
-            -- Turn on the display port and set it as the primary display
-            , ((mod4Mask .|. shiftMask, xK_d), spawn
-                " /usr/bin/xrandr --output LVDS-1 --primary --auto --output \
-                \  DP-1 --left-of LVDS-1 --auto"
+            -- Turn on the eDP-1 port and set it as the primary display
+            , ((mod4Mask .|. shiftMask, xK_e), spawn
+                " /usr/bin/xrandr --output eDP-1 --primary --auto --output "
                 )
             -- Turn off the HDMI port
             , ((mod4Mask .|. controlMask, xK_h), spawn
                 "/usr/bin/xrandr --output HDMI-1 --off"
                 )
-            -- Turn on the HDMI port and set it as the primary display
+            -- Turn on the HDMI-1 port and set it as the secondary display
             , ((mod4Mask .|. shiftMask, xK_h), spawn
-                " /usr/bin/xrandr --output LVDS-1 --primary --auto --output \
-                \ HDMI-1 --right-of LVDS-1 --auto"
-                )
-            -- Turn off the VGA port
-            , ((mod4Mask, xK_v), spawn "/usr/bin/xrandr --output VGA-1 --off")
-            -- Turn on the VGA port and set it as the primary display
-            , ((mod4Mask .|. shiftMask, xK_v), spawn
-                " /usr/bin/xrandr --output LVDS-1 --primary --auto --output \
-                \ VGA-1 --right-of LVDS-1 --auto"
+                " /usr/bin/xrandr --output eDP-1 --primary --auto --output \
+                \ HDMI-1 --right-of eDP-1 --auto"
                 )
             , ((0 , 0x1008FF11), spawn
                 "amixer set Master 2%-") -- XF86AudioLowerVolume
@@ -69,4 +60,8 @@ main = do
             , ((0 , 0x1008FF15), spawn "mpc stop") -- Stop
             , ((0 , 0x1008FF16), spawn "mpc prev") -- XF86AudioPrevious
             , ((0 , 0x1008FF17), spawn "mpc next") -- XF86AudioNext
+            -- XF86MonBrightnessUp
+            , ((0 , 0x1008ff02), spawn "brightnessctl s +5%")
+            -- XF86MonBrightnessDown
+            , ((0 , 0x1008ff03), spawn "brightnessctl s 5%-")
             ]
