@@ -1,0 +1,6 @@
+/usr/bin/mpd &
+/usr/bin/xsettingsd &
+/usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 6 --transparent true --alpha 0 --tint 0x073642 --height 23 --monitor 0 &
+/usr/bin/owncloud &
+/usr/bin/xscreensaver -no-splash &
+/usr/bin/feh --bg-scale ~/Documents/Images/Posters/meteor2017event4299_Taylor.jpg &

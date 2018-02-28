@@ -1,7 +1,9 @@
 *
+!/.gertty.yaml
 !/.ghc/
 !/.ghc/ghci.conf
 !/.gitconfig
+!/.mailcap
 !/.mpd
 !/.mpd/mpd.conf
 !/.ncmpcpp
@@ -12,6 +14,7 @@
 !/.vimrc
 !/.xmobarrc
 !/.xmonad
+!/.xmonad/xmonad-session-rc
 !/.xmonad/xmonad.hs
 !/.xscreensaver
 !/.xsession
