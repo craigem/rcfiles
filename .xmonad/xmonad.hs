@@ -57,9 +57,12 @@ main = do
             , ((0 , 0x1008FF13), spawn
                 "amixer set Master 2%+") -- XF86AudioRaiseVolume
             , ((0 , 0x1008FF14), spawn "mpc toggle") -- Play/pause
+            , ((mod4Mask .|. controlMask, xK_space), spawn "mpc toggle") -- Play/pause
             , ((0 , 0x1008FF15), spawn "mpc stop") -- Stop
             , ((0 , 0x1008FF16), spawn "mpc prev") -- XF86AudioPrevious
+            , ((mod4Mask , xK_h), spawn "mpc prev") -- prev
             , ((0 , 0x1008FF17), spawn "mpc next") -- XF86AudioNext
+            , ((mod4Mask , xK_l), spawn "mpc next") -- Next
             -- XF86MonBrightnessUp
             , ((0 , 0x1008ff02), spawn "brightnessctl s +5%")
             -- XF86MonBrightnessDown
