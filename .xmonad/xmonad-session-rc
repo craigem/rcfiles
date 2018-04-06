@@ -1,3 +1,4 @@
+/usr/bin/xcompmgr -f -C -n -D 3 &
 /usr/bin/mpd &
 /usr/bin/xsettingsd &
 /usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 6 --transparent true --alpha 0 --tint 0x073642 --height 23 --monitor 0 &
