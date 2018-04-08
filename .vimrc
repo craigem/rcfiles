@@ -8,6 +8,7 @@ set expandtab
 set t_Co=256            " use 265 colors in vim
 syntax enable
 colorscheme solarized
+hi Normal guibg=NONE ctermbg=NONE
 match ErrorMsg '\s\+$'
 
 " Set up the status line so it's colored and always on
