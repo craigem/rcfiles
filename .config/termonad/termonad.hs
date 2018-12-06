@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
--- | This is my Termonad configuration.
+-- This is my Termonad configuration.
 
 module Main where
 
@@ -35,7 +35,7 @@ myTMConfig =
           }
     }
 
--- | This is our Solarized dark 'ColourConfig'.  It holds all of our dark-related settings.
+-- This is our Solarized dark 'ColourConfig'.  It holds all of our dark-related settings.
 solarizedDark :: ColourConfig (Colour Double)
 solarizedDark =
   defaultColourConfig
@@ -69,7 +69,7 @@ solarizedDark =
       :* sRGB24 253 246 227 -- base3
       :* EmptyVec
 
--- | This is our Solarized light 'ColourConfig'.  It holds all of our light-related settings.
+-- This is our Solarized light 'ColourConfig'.  It holds all of our light-related settings.
 solarizedLight :: ColourConfig (Colour Double)
 solarizedLight =
   defaultColourConfig
@@ -103,7 +103,7 @@ solarizedLight =
       :* sRGB24   0  43  54 -- base03
       :* EmptyVec
 
--- | This defines the font for the terminal.
+-- This defines the font for the terminal.
 fontConf :: FontConfig
 fontConf =
   defaultFontConfig
