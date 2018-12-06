@@ -1,55 +1,107 @@
 {-# LANGUAGE OverloadedStrings #-}
-
--- | This is my configuration file for the Termonad terminal emulator.
+-- | This is my Termonad configuration.
 
 module Main where
 
-import Data.Colour.SRGB (Colour, sRGB24)
--- import Data.Colour (withOpacity)
-import Termonad.App (defaultMain)
-import Termonad.Config
-  ( FontConfig, FontSize(FontSizePoints), Option(Set)
-  , ShowScrollbar(ShowScrollbarNever), defaultFontConfig, defaultTMConfig
-  , fontConfig, fontFamily, fontSize, showScrollbar, showMenu
+import Termonad
+  ( CursorBlinkMode(CursorBlinkModeOff), Option(Set)
+  , ShowScrollbar(ShowScrollbarNever), TMConfig, confirmExit, cursorBlinkMode
+  , defaultConfigOptions, defaultTMConfig, options, showMenu, showScrollbar
+  , start, FontConfig, FontSize(FontSizePoints), defaultFontConfig, fontConfig
+  , fontFamily, fontSize
   )
 import Termonad.Config.Colour
-import Termonad.Config.Vec (Vec, VecT((:+), EmptyV), N8)
-import Termonad.Config.Extension ((<+>))
+  ( Colour, ColourConfig, Palette(ExtendedPalette), addColourExtension
+  , createColourExtension, cursorBgColour, defaultColourConfig, foregroundColour
+  , palette, sRGB24
+  )
+import Termonad.Config.Vec (Vec((:*), EmptyVec), N8, unsafeFromListVec_)
+import Data.Colour.SRGB (Colour, sRGB24)
 
--- | This sets the color of the cursor in the terminal.
+-- This is our main 'TMConfig'.  It holds all of the non-colour settings
+-- for Termonad.
 --
--- This uses the "Data.Colour" module to define a dark-red color.
--- There are many default colors defined in "Data.Colour.Names".
-cursBgColor :: Colour Double
-cursBgColor = sRGB24 204 0 0
+-- This shows how a few settings can be changed.
+myTMConfig :: TMConfig
+myTMConfig =
+  defaultTMConfig
+    { options =
+        defaultConfigOptions
+          { showScrollbar = ShowScrollbarNever
+          , confirmExit = False
+          , showMenu = False
+          , cursorBlinkMode = CursorBlinkModeOff
+          , fontConfig = fontConf
+          }
+    }
 
--- | This sets the colors used for the terminal.  We only specify the background
--- color of the cursor.
-colConf :: ColourConfig (Colour Double)
-colConf =
+-- | This is our Solarized dark 'ColourConfig'.  It holds all of our dark-related settings.
+solarizedDark :: ColourConfig (Colour Double)
+solarizedDark =
   defaultColourConfig
-    { cursorBgColour = Set cursBgColor -- `withOpacity` 0.7
-    , palette = BasicPalette mySolarizedColours
-    } where
-        mySolarizedColours :: Vec N8 (Colour Double)
-        mySolarizedColours
-          =  sRGB24 0 43 54 -- base03, background
-          :+ sRGB24 220 50 47 -- red
-          :+ sRGB24 7 54 66 -- base02
-          :+ sRGB24 203 75 22 -- orange
-          :+ sRGB24 38 139 210 -- blue
-          :+ sRGB24 211 54 130 -- magenta
-          :+ sRGB24 42 161 152 -- cyan
-          :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          -- :+ sRGB24 211 54 130 -- magenta
-          :+ EmptyV
+    -- Set the default foreground colour of text of the terminal.
+    { foregroundColour = sRGB24 131 148 150 -- base0
+    -- Set the extended palette that has 2 Vecs of 8 Solarized pallette colours
+    , palette = ExtendedPalette solarizedDark1 solarizedDark2
+    }
+  where
+    solarizedDark1 :: Vec N8 (Colour Double)
+    solarizedDark1 =
+         sRGB24   0  43  54 -- base03, background
+      :* sRGB24 220  50  47 -- red
+      :* sRGB24 133 153   0 -- green
+      :* sRGB24 181 137   0 -- yellow
+      :* sRGB24  38 139 210 -- blue
+      :* sRGB24 211  54 130 -- magenta
+      :* sRGB24  42 161 152 -- cyan
+      :* sRGB24 238 232 213 -- base2
+      :* EmptyVec
+
+    solarizedDark2 :: Vec N8 (Colour Double)
+    solarizedDark2 =
+         sRGB24   7  54  66 -- base02, background highlights
+      :* sRGB24 203  75  22 -- orange
+      :* sRGB24  88 110 117 -- base01, comments / secondary text
+      :* sRGB24 131 148 150 -- base0, body text / default code / primary content
+      :* sRGB24 147 161 161 -- base1, optional emphasised content
+      :* sRGB24 108 113 196 -- violet
+      :* sRGB24 101 123 131 -- base00
+      :* sRGB24 253 246 227 -- base3
+      :* EmptyVec
+
+-- | This is our Solarized light 'ColourConfig'.  It holds all of our light-related settings.
+solarizedLight :: ColourConfig (Colour Double)
+solarizedLight =
+  defaultColourConfig
+    -- Set the default foreground colour of text of the terminal.
+    { foregroundColour = sRGB24 101 123 131 -- base00
+    -- Set the extended palette that has 2 Vecs of 8 Solarized pallette colours
+    , palette = ExtendedPalette solarizedLight1 solarizedLight2
+    }
+  where
+    solarizedLight1 :: Vec N8 (Colour Double)
+    solarizedLight1 =
+         sRGB24 238 232 213 -- base2, background highlights
+      :* sRGB24 220  50  47 -- red
+      :* sRGB24 133 153   0 -- green
+      :* sRGB24 181 137   0 -- yellow
+      :* sRGB24  38 139 210 -- blue
+      :* sRGB24 211  54 130 -- magenta
+      :* sRGB24  42 161 152 -- cyan
+      :* sRGB24   7  54  66 -- base02
+      :* EmptyVec
+
+    solarizedLight2 :: Vec N8 (Colour Double)
+    solarizedLight2 =
+         sRGB24 253 246 227 -- base3, background
+      :* sRGB24 203  75  22 -- orange
+      :* sRGB24 147 161 161 -- base1, comments / secondary text
+      :* sRGB24 101 123 131 -- base00, body text / default code / primary content
+      :* sRGB24  88 110 117 -- base01, optional emphasised content
+      :* sRGB24 108 113 196 -- violet
+      :* sRGB24 131 148 150 -- base0
+      :* sRGB24   0  43  54 -- base03
+      :* EmptyVec
 
 -- | This defines the font for the terminal.
 fontConf :: FontConfig
@@ -61,11 +113,11 @@ fontConf =
 
 main :: IO ()
 main = do
-  let termonadConf =
-        defaultTMConfig
-          { fontConfig = fontConf
-          -- Make sure the scrollbar is never visible.
-          , showScrollbar = ShowScrollbarNever
-          , showMenu = False
-          } <+> colConf
-  defaultMain termonadConf
+  -- First, create the colour extension based on either Solarixed modules.
+  myColourExt <- createColourExtension solarizedDark
+
+  -- Update 'myTMConfig' with our colour extension.
+  let newTMConfig = addColourExtension myTMConfig myColourExt
+
+  -- Start Termonad with our updated 'TMConfig'.
+  start newTMConfig
