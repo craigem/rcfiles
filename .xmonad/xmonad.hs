@@ -7,13 +7,29 @@ import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
 main = do
-    xmproc <- spawnPipe "/usr/bin/xmobar /home/craige/.xmobarrc"
-    spawn "/usr/lib/notification-daemon/notification-daemon"
+    -- Make sure that HDMI is turned off by default
+    spawn "xrandr --output HDMI1 --off"
+    -- Launch the composite manager
+    spawn "xcompmgr -f -C -n -D 3"
     -- Launch xmobar as my task bar.
+    xmproc <- spawnPipe "xmobar /home/craige/.xmobarrc"
+    -- Launch the system tray
+    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 5 --transparent true --alpha 0 --tint 0x073642 --height 19 --monitor 0"
+    --xmproc <- spawnPipe "notification-daemon"
+    -- Launch the settings daemon
+    spawn "xsettingsd"
+    -- Launch the screen saver
+    spawn "xscreensaver -no-splash"
+    spawn "nm-applet"
+    spawn "owncloud"
+    -- Launch the music playing daemon
+    spawn "mpd"
+    -- Set the background wallpaper
+    spawn "feh --bg-scale ~/Documents/Images/Posters/MWTree_Toledano_6016.jpg
     xmonad $ desktopConfig
         { focusFollowsMouse = False
-        , terminal = "terminology"
-        , manageHook = manageDocks <+> manageHook desktopConfig
+        , terminal = "termonad"
+        -- , manageHook = manageDocks <+> manageHook desktopConfig
         , layoutHook = avoidStruts $ layoutHook desktopConfig
         , logHook = dynamicLogWithPP $ xmobarPP
             { ppOutput = hPutStrLn xmproc
@@ -39,32 +55,31 @@ main = do
             , ((0, xK_Print), spawn "scrot")
             -- Turn on the eDP-1 port and set it as the primary display
             , ((mod4Mask .|. shiftMask, xK_e), spawn
-                " /usr/bin/xrandr --output eDP-1 --primary --auto --output "
+                "xrandr --output eDP1 --primary --auto --output "
                 )
             -- Turn off the HDMI port
             , ((mod4Mask .|. controlMask, xK_h), spawn
-                "/usr/bin/xrandr --output HDMI-1 --off"
+                "xrandr --output HDMI1 --off"
                 )
             -- Turn on the HDMI-1 port and set it as the secondary display
             , ((mod4Mask .|. shiftMask, xK_h), spawn
-                " /usr/bin/xrandr --output eDP-1 --primary --auto --output \
-                \ HDMI-1 --right-of eDP-1 --auto"
+                "xrandr --output eDP1 --primary --auto --output HDMI1 --right-of eDP1 --auto"
                 )
-            , ((0 , 0x1008FF11), spawn
-                "amixer set Master 2%-") -- XF86AudioLowerVolume
-            , ((0 , 0x1008FF12), spawn
-                "amixer set Master toggle") -- XF86AudioMute
-            , ((0 , 0x1008FF13), spawn
-                "amixer set Master 2%+") -- XF86AudioRaiseVolume
+            , ((0 , 0x1008FF11), spawn "amixer set Master 2%-") -- XF86AudioLowerVolume
+            -- , ((mod4Mask , xK_Down), spawn "amixer set Master 2%-")
+            , ((0 , 0x1008FF12), spawn "amixer set Master toggle") -- XF86AudioMute
+            , ((0 , 0x1008FF13), spawn "amixer set Master 2%+") -- XF86AudioRaiseVolume
+            -- , ((mod4Mask , xK_Up), spawn "amixer set Master 2%+")
             , ((0 , 0x1008FF14), spawn "mpc toggle") -- Play/pause
+            -- , ((mod4Mask , xK_End), spawn "mpc toggle")
             , ((mod4Mask .|. controlMask, xK_space), spawn "mpc toggle") -- Play/pause
             , ((0 , 0x1008FF15), spawn "mpc stop") -- Stop
             , ((0 , 0x1008FF16), spawn "mpc prev") -- XF86AudioPrevious
-            , ((mod4Mask , xK_h), spawn "mpc prev") -- prev
+            , ((mod4Mask , xK_Left), spawn "mpc prev") -- prev
             , ((0 , 0x1008FF17), spawn "mpc next") -- XF86AudioNext
-            , ((mod4Mask , xK_l), spawn "mpc next") -- Next
+            , ((mod4Mask , xK_Right), spawn "mpc next") -- Next
             -- XF86MonBrightnessUp
-            , ((0 , 0x1008ff02), spawn "brightnessctl s +5%")
+            , ((0 , 0x1008ff02), spawn "xbrightness +5000")
             -- XF86MonBrightnessDown
-            , ((0 , 0x1008ff03), spawn "brightnessctl s 5%-")
+            , ((0 , 0x1008ff03), spawn "xbrightness -5000")
             ]
