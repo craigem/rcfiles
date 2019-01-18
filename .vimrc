@@ -5,17 +5,28 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set t_Co=256            " use 265 colors in vim
 syntax enable
 colorscheme solarized
-hi Normal guibg=NONE ctermbg=NONE
+set t_Co=256            " use 265 colors in vim
+" hi Normal guibg=NONE ctermbg=NONE
 match ErrorMsg '\s\+$'
+
+set rtp+=/run/current-system/sw/share/vim-plugins/vim-airline
+set rtp+=/run/current-system/sw/share/vim-plugins/vim-airline-themes
+set rtp+=/run/current-system/sw/share/vim-plugins/neocomplete-vim
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
+set laststatus=2
+
+call togglebg#map("<F10>")
 
 " Set up the status line so it's colored and always on
 set laststatus=2
-highlight StatusLine cterm=none ctermbg=darkgreen ctermfg=black
-highlight StatusLineNC cterm=none ctermbg=darkgreen ctermfg=black
-highlight VertSplit cterm=none ctermbg=darkgreen ctermfg=black
+" highlight StatusLine cterm=none ctermbg=black ctermfg=244
+"highlight StatusLineNC cterm=none ctermbg=black ctermfg=244
+"highlight VertSplit cterm=none ctermbg=black ctermfg=244
+"highlight LineNr cterm=none ctermbg=black ctermfg=244
 
 " Removes trailing spaces:
 function! TrimWhiteSpace()
@@ -115,7 +126,7 @@ function! MuttSettings()
     set shiftwidth=4
     set expandtab
 endfunction
-autocmd BufNewFile,BufFilePre,BufRead mutt-* :call MuttSettings()
+autocmd BufNewFile,BufFilePre,BufRead /tmp/mutt-* :call MuttSettings()
 
 " Settings for my C environment:
 function! CSettings()
