@@ -1,7 +1,7 @@
 Config {
 
     -- Appearance
-      font = "xft:OpenSans:size=10:antialias=true"
+      font = "xft:OpenSans:size=9:antialias=true"
     , bgColor = "#073642"
     , fgColor = "#93a1a1"
     , position = TopW L 95
@@ -9,7 +9,7 @@ Config {
     -- Layout
     , sepChar = "%"
     , alignSep = "}{"
-    , template = "%StdinReader% }{ %multicpu% %coretemp% %cpufreq% | %memory% | %dynnetwork% | %battery% | %YBRK% %uv brisbane% | %date%"
+    , template = "%StdinReader% } %mpd% { %multicpu% %coretemp% %cpufreq% | %memory% | %battery% | %YBRK% %uv brisbane% | %date%"
 
     -- Behaviour
     , lowerOnStart = False
@@ -77,15 +77,6 @@ Config {
                              , "--high"     , "#dc322f"
                              ] 36000
 
-        -- Network Activity Monitor
-        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
-                             , "--Low"      , "1000"       -- units: kB/s
-                             , "--High"     , "5000"       -- units: kB/s
-                             , "--low"      , "#2aa198"
-                             , "--normal"   , "#859900"
-                             , "--high"     , "#dc322f"
-                             ] 10
-
         -- Time and Date Display
         , Run Date           "<fc=#268bd2>%a %b %_d %H:%M</fc>" "date" 10
 
@@ -95,5 +86,7 @@ Config {
                                  , "--low"  , "#859900"
                                  , "--high" , "#dc322f"
                                  ] 900
+        -- MPD status
+        , Run MPD ["-t","<artist> - <title> (<album>) <statei> ","--", "-P", ">>", "-Z", "|", "-S", "><"] 10
         ]
 }
