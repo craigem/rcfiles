@@ -1,6 +1,6 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.34 for craige on Mon Aug 15 10:43:25 2016.
-# http://www.jwz.org/xscreensaver/
+# Written by xscreensaver-demo 5.40 for craige on Thu Nov 29 09:39:21 2018.
+# https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
 cycle:		0:10:00
@@ -26,9 +26,9 @@ ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	True
 dpmsQuickOff:	False
-dpmsStandby:	2:00:00
-dpmsSuspend:	2:00:00
-dpmsOff:	4:00:00
+dpmsStandby:	0:05:00
+dpmsSuspend:	0:05:00
+dpmsOff:	0:10:00
 grabDesktopImages:  False
 grabVideoFrames:    False
 chooseRandomImages: True
@@ -258,6 +258,26 @@ programs:								      \
 - GL: 				romanboy -root				    \n\
 - GL: 				splitflap -root				    \n\
 -				testx11 -root				    \n\
+  GL: 				cubestack -root				    \n\
+  GL: 				cubetwist -root				    \n\
+  GL: 				discoball -root				    \n\
+  GL: 				dymaxionmap -root			    \n\
+  GL: 				energystream -root			    \n\
+  GL: 				hexstrut -root				    \n\
+  GL: 				hydrostat -root				    \n\
+  GL: 				raverhoop -root				    \n\
+  GL: 				splodesic -root				    \n\
+  GL: 				unicrud -root				    \n\
+- GL: 				dnalogo -root				    \n\
+  GL: 				esper -root				    \n\
+  GL: 				vigilance -root				    \n\
+  GL: 				crumbler -root				    \n\
+				filmleader -root			    \n\
+				glitchpeg -root				    \n\
+  GL: 				maze3d -root				    \n\
+  GL: 				peepers -root				    \n\
+  GL: 				razzledazzle -root			    \n\
+				vfeedback -root				    \n\
 
 
 pointerPollTime:    0:00:05
