@@ -127,6 +127,7 @@ function! MuttSettings()
     set expandtab
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead /tmp/mutt-* :call MuttSettings()
+autocmd BufNewFile,BufFilePre,BufRead /tmp/neomutt-* :call MuttSettings()
 
 " Settings for my C environment:
 function! CSettings()
