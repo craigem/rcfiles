@@ -1,4 +1,6 @@
 *
+!/.config
+!/.config/radiotray-ng
 !/.config/radiotray-ng/bookmarks.json
 !/.gertty.yaml
 !/.ghc/
