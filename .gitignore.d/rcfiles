@@ -11,6 +11,7 @@
 !/.mpd/mpd.conf
 !/.ncmpcpp
 !/.ncmpcpp/config
+!/.upower.txt
 !/.vim
 !/.vim/colors
 !/.vim/colors/solarized.vim

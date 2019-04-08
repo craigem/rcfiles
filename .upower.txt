@@ -1,0 +1,58 @@
+Device: /org/freedesktop/UPower/devices/line_power_AC
+  native-path:          AC
+  power supply:         yes
+  updated:              Mon 08 Apr 2019 10:32:02 AEST (160 seconds ago)
+  has history:          no
+  has statistics:       no
+  line-power
+    warning-level:       none
+    online:              yes
+    icon-name:          'ac-adapter-symbolic'
+
+Device: /org/freedesktop/UPower/devices/battery_BAT
+  native-path:          BAT
+  vendor:               TPS
+  model:                S10
+  power supply:         yes
+  updated:              Mon 08 Apr 2019 10:34:01 AEST (41 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  battery
+    present:             yes
+    rechargeable:        yes
+    state:               charging
+    warning-level:       none
+    energy:              47.175 Wh
+    energy-empty:        0 Wh
+    energy-full:         54.2124 Wh
+    energy-full-design:  48.84 Wh
+    energy-rate:         0 W
+    voltage:             12.324 V
+    percentage:          87%
+    capacity:            100%
+    technology:          lithium-ion
+    icon-name:          'battery-full-charging-symbolic'
+  History (charge):
+    1554683641	87.000	charging
+
+Device: /org/freedesktop/UPower/devices/DisplayDevice
+  power supply:         yes
+  updated:              Mon 08 Apr 2019 10:34:01 AEST (41 seconds ago)
+  has history:          no
+  has statistics:       no
+  battery
+    present:             yes
+    state:               charging
+    warning-level:       none
+    energy:              47.175 Wh
+    energy-full:         54.2124 Wh
+    energy-rate:         0 W
+    percentage:          87%
+    icon-name:          'battery-full-charging-symbolic'
+
+Daemon:
+  daemon-version:  0.99.7
+  on-battery:      no
+  lid-is-closed:   no
+  lid-is-present:  yes
+  critical-action: HybridSleep
