@@ -26,7 +26,7 @@ main = do
     -- Launch the music playing daemon
     spawn "mpd"
     -- Set the background wallpaper
-    spawn "feh --bg-scale ~/Documents/Images/Posters/MWTree_Toledano_6016.jpg"
+    spawn "feh --bg-scale ~/Documents/Images/Posters/FuegoMilkyWay.jpg"
     xmonad $ desktopConfig
         { focusFollowsMouse = False
         , terminal = "termonad"
