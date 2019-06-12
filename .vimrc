@@ -1,4 +1,4 @@
-" Preferred global default settings:
+"" Preferred global default settings:
 set number
 set background=dark
 set smartindent
@@ -9,6 +9,7 @@ syntax enable
 colorscheme solarized
 set t_Co=256            " use 265 colors in vim
 " hi Normal guibg=NONE ctermbg=NONE
+hi SpellBad cterm=underline
 match ErrorMsg '\s\+$'
 
 set rtp+=/run/current-system/sw/share/vim-plugins/vim-airline
@@ -122,9 +123,9 @@ autocmd BufNewFile,BufFilePre,BufRead *.py :call PythonSettings()
 function! MuttSettings()
     set textwidth=79
     set spell spelllang=en_au
-    set tabstop=4
-    set shiftwidth=4
-    set expandtab
+    "set tabstop=4
+    "set shiftwidth=4
+    "set expandtab
 endfunction
 autocmd BufNewFile,BufFilePre,BufRead /tmp/mutt-* :call MuttSettings()
 autocmd BufNewFile,BufFilePre,BufRead /tmp/neomutt-* :call MuttSettings()
