@@ -4,6 +4,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+--import XMonad.Util.SpawnOnce
 import System.IO
 
 main = do
@@ -14,7 +15,7 @@ main = do
     -- Launch xmobar as my task bar.
     xmproc <- spawnPipe "xmobar /home/craige/.xmobarrc"
     -- Launch the system tray
-    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 5 --transparent true --alpha 0 --tint 0x073642 --height 19 --monitor 0"
+    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 5 --transparent true --alpha 0 --tint 0x073642 --height 20 --monitor 0"
     --xmproc <- spawnPipe "notification-daemon"
     -- Launch the settings daemon
     spawn "xsettingsd"
