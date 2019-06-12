@@ -4,13 +4,13 @@
       "image" : "",
       "stations" : [
          {
-            "image" : "",
+            "image" : "/home/craige/Documents/InstantUpload/triplej.png",
             "name" : "triplej",
             "notifications" : true,
             "url" : "http://www.abc.net.au/res/streaming/audio/aac/triplej.pls"
          },
          {
-            "image" : "",
+            "image" : "/home/craige/Documents/InstantUpload/doublej.png",
             "name" : "doublej",
             "notifications" : true,
             "url" : "http://www.abc.net.au/res/streaming/audio/aac/dig_music.pls"
@@ -34,10 +34,34 @@
       "image" : "",
       "stations" : [
          {
-            "image" : "/tmp/sbs_chill_radio_station_704.jpg",
+            "image" : "/home/craige/Documents/InstantUpload/SbsChill.png",
             "name" : "SBS Chill",
             "notifications" : true,
             "url" : "http://sbs-ice.streamguys1.com/sbschill"
+         }
+      ]
+   },
+   {
+      "group" : "FBi",
+      "image" : "",
+      "stations" : [
+         {
+            "image" : "/tmp/FBi_radio_logo.jpg",
+            "name" : "FBi",
+            "notifications" : true,
+            "url" : "https://stream.fbiradio.com/stream.mp3"
+         }
+      ]
+   },
+   {
+      "group" : "4ZZZ",
+      "image" : "",
+      "stations" : [
+         {
+            "image" : "/home/craige/Documents/InstantUpload/4zzz.png",
+            "name" : "4ZZZ",
+            "notifications" : true,
+            "url" : "http://stream.4zzzfm.org.au:789/listen.pls"
          }
       ]
    },
