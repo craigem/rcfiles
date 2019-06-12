@@ -1,7 +1,7 @@
-/usr/bin/xcompmgr -f -C -n -D 3 &
-/usr/bin/mpd &
-/usr/bin/xsettingsd &
-/usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 6 --transparent true --alpha 0 --tint 0x073642 --height 23 --monitor 0 &
-/usr/bin/owncloud &
-/usr/bin/xscreensaver -no-splash &
-/usr/bin/feh --bg-scale ~/Documents/Images/Posters/meteor2017event4299_Taylor.jpg &
+/run/current-system/sw/bin/xcompmgr -f -C -n -D 3 &
+/run/current-system/sw/bin/mpd &
+/run/current-system/sw/bin/xsettingsd &
+/run/current-system/sw/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 6 --transparent true --alpha 0 --tint 0x073642 --height 23 --monitor 0 &
+/run/current-system/sw/bin/owncloud &
+/run/current-system/sw/bin/xscreensaver -no-splash &
+/run/current-system/sw/bin/feh --bg-scale ~/Documents/Images/Posters/OrionRedBlue_Lindemann_1500.jpg
