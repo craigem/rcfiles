@@ -2,3 +2,4 @@ text/html;          lynx %s; nametemplate=%s.html
 text/html;          lynx -dump -width=78 -nolist %s; nametemplate=%s.html; copiousoutput
 application/pdf;    evince %s
 image/jpeg;         feh --scale-down %s
+image/png;          feh --scale-down %s
