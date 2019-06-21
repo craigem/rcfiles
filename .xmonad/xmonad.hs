@@ -56,15 +56,15 @@ main = do
             , ((0, xK_Print), spawn "scrot")
             -- Turn on the eDP-1 port and set it as the primary display
             , ((mod4Mask .|. shiftMask, xK_e), spawn
-                "xrandr --output eDP1 --primary --auto --output "
+                "xrandr --output eDP-1 --primary --auto --output "
                 )
             -- Turn off the HDMI port
             , ((mod4Mask .|. controlMask, xK_h), spawn
-                "xrandr --output HDMI1 --off"
+                "xrandr --output HDMI-1 --off"
                 )
             -- Turn on the HDMI-1 port and set it as the secondary display
             , ((mod4Mask .|. shiftMask, xK_h), spawn
-                "xrandr --output eDP1 --primary --auto --output HDMI1 --right-of eDP1 --auto"
+                "xrandr --output eDP-1 --primary --auto --output HDMI-1 --right-of eDP-1 --auto"
                 )
             , ((0 , 0x1008FF11), spawn "amixer set Master 2%-") -- XF86AudioLowerVolume
             -- , ((mod4Mask , xK_Down), spawn "amixer set Master 2%-")
