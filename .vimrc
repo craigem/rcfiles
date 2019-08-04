@@ -60,7 +60,7 @@ augroup encrypted
     autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
 
     " Convert all text to encrypted text before writing
-    autocmd BufWritePre,FileWritePre    *.gpg   '[,']!gpg --default-key=04CE4B93 --default-recipient-self -ae 2>/dev/null
+    autocmd BufWritePre,FileWritePre    *.gpg   '[,']!gpg --default-key=A4122FF3971B6865 --default-recipient-self -ae 2>/dev/null
     " Undo the encryption so we are back in the normal text, directly
     " after the file has been written.
     autocmd BufWritePost,FileWritePost    *.gpg   u
