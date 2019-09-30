@@ -11,6 +11,7 @@
 !/.mpd/mpd.conf
 !/.ncmpcpp
 !/.ncmpcpp/config
+!/.taskrc
 !/.upower.txt
 !/.vim
 !/.vim/colors
