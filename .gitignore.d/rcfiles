@@ -2,6 +2,8 @@
 !/.config
 !/.config/radiotray-ng
 !/.config/radiotray-ng/bookmarks.json
+!/.config/sway
+!/.config/sway/config
 !/.gertty.yaml
 !/.ghc/
 !/.ghc/ghci.conf
