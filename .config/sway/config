@@ -18,6 +18,8 @@ set $term termonad
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec
+# Set your preferred screen locker
+set $lock swaylock -f -c 000000
 
 ### Output configuration
 #
@@ -62,6 +64,8 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 #
 # Basics:
 #
+    # Lock the screen
+    bindsym $mod+Control+l exec $lock
     # start a terminal
     bindsym $mod+Return exec $term
 
