@@ -21,6 +21,9 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 # Set your preferred screen locker
 set $lock swaylock -f -c 000000
 
+# Set the border styles
+default_border pixel
+
 ### Output configuration
 #
 # Default wallpaper
