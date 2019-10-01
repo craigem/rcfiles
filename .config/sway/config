@@ -24,7 +24,7 @@ set $lock swaylock -f -c 000000
 ### Output configuration
 #
 # Default wallpaper
-#output * bg ~/.config/sway/backgrounds/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Documents/Images/Posters/FuegoMilkyWay.jpg fill
 #
 # Example configuration:
 #
