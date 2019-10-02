@@ -27,6 +27,7 @@ main = do
     spawn "mpd"
     -- Set the background wallpaper
     spawn "feh --bg-scale ~/Documents/Images/Posters/FuegoMilkyWay.jpg"
+    spawn "lxqt-notificationd"
     xmonad $ desktopConfig
         { focusFollowsMouse = False
         , terminal = "termonad"
