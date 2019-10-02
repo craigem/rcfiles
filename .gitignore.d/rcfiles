@@ -1,5 +1,7 @@
 *
 !/.config
+!/.config/byobu
+!/.config/byobu/profile.tmux
 !/.config/radiotray-ng
 !/.config/radiotray-ng/bookmarks.json
 !/.config/sway
@@ -8,12 +10,14 @@
 !/.ghc/
 !/.ghc/ghci.conf
 !/.gitconfig
+!/.gitignore*
 !/.mailcap
 !/.mpd
 !/.mpd/mpd.conf
 !/.ncmpcpp
 !/.ncmpcpp/config
 !/.taskrc
+!/.tmux.conf
 !/.upower.txt
 !/.vim
 !/.vim/colors
