@@ -4,8 +4,8 @@
 data.location=~/.task
 
 # Color theme (uncomment one to use)
-#include /nix/store/rf6jgkwidsapibjcljvcy14s1m3pz5gd-taskwarrior-2.5.1/share/doc/task/rc/solarized-dark-256.theme
-include /nix/store/rf6jgkwidsapibjcljvcy14s1m3pz5gd-taskwarrior-2.5.1/share/doc/task/rc/solarized-light-256.theme
+include /run/current-system/sw/share/doc/task/rc/solarized-dark-256.theme
+#include /run/current-system/sw/share/doc/task/rc/solarized-light-256.theme
 
 taskd.server=task.mcwhirter.io:53589
 taskd.credentials=teaghlach/craige/82e4f8ba-6297-4e54-8524-533f3e8df2d3
