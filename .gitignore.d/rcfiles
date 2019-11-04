@@ -1,5 +1,7 @@
 *
 !/.config
+!/.config/alacritty
+!/.config/alacritty/alacritty.yml
 !/.config/byobu
 !/.config/byobu/profile.tmux
 !/.config/radiotray-ng
@@ -17,6 +19,7 @@
 !/.ncmpcpp
 !/.ncmpcpp/config
 !/.taskrc
+!/.taskrc_obair
 !/.tmux.conf
 !/.upower.txt
 !/.vim
