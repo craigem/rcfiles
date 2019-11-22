@@ -1,11 +1,25 @@
 import XMonad
 import XMonad.Config.Desktop
+import Data.Monoid
+import Data.Word
+import Graphics.X11.Xlib
+import Graphics.X11.Xlib.Extras
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 --import XMonad.Util.SpawnOnce
 import System.IO
+
+-- Provide transparent widows for xmonad
+setTransparentHook :: Event -> X All
+setTransparentHook ConfigureEvent{ev_event_type = createNotify, ev_window = id} = do
+  setOpacity id opacity
+  return (All True) where
+    opacityFloat = 0.9
+    opacity = floor $ fromIntegral (maxBound :: Word32) * opacityFloat
+    setOpacity id op = spawn $ "xprop -id " ++ show id ++ " -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY " ++ show op
+setTransparentHook _ = return (All True)
 
 main = do
     -- Make sure that HDMI is turned off by default
@@ -29,7 +43,8 @@ main = do
     spawn "feh --bg-scale ~/Documents/Images/Posters/FuegoMilkyWay.jpg"
     spawn "lxqt-notificationd"
     xmonad $ desktopConfig
-        { focusFollowsMouse = False
+        { handleEventHook = setTransparentHook <+> handleEventHook def
+        , focusFollowsMouse = False
         , terminal = "termonad"
         -- , manageHook = manageDocks <+> manageHook desktopConfig
         , layoutHook = avoidStruts $ layoutHook desktopConfig
