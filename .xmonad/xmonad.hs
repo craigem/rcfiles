@@ -11,16 +11,6 @@ import XMonad.Util.EZConfig(additionalKeys)
 --import XMonad.Util.SpawnOnce
 import System.IO
 
--- Provide transparent widows for xmonad
-setTransparentHook :: Event -> X All
-setTransparentHook ConfigureEvent{ev_event_type = createNotify, ev_window = id} = do
-  setOpacity id opacity
-  return (All True) where
-    opacityFloat = 0.9
-    opacity = floor $ fromIntegral (maxBound :: Word32) * opacityFloat
-    setOpacity id op = spawn $ "xprop -id " ++ show id ++ " -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY " ++ show op
-setTransparentHook _ = return (All True)
-
 main = do
     -- Make sure that HDMI is turned off by default
     spawn "xrandr --output HDMI1 --off"
@@ -31,8 +21,7 @@ main = do
     -- Launch xmobar as my task bar.
     xmproc <- spawnPipe "xmobar /home/craige/.xmobarrc"
     -- Launch the system tray
-    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 5 --transparent true --alpha 0 --tint 0x073642 --height 20 --monitor 0"
-    --xmproc <- spawnPipe "notification-daemon"
+    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 5 --transparent true --alpha 0 --tint 0x073642 --height 20 --monitor primary"
     -- Launch the settings daemon
     spawn "xsettingsd"
     -- Launch the screen saver
@@ -45,10 +34,9 @@ main = do
     spawn "feh --bg-scale ~/Documents/Images/Posters/FuegoMilkyWay.jpg"
     spawn "lxqt-notificationd"
     xmonad $ desktopConfig
-        { handleEventHook = setTransparentHook <+> handleEventHook def
-        , focusFollowsMouse = False
-        , terminal = "termonad"
-        -- , manageHook = manageDocks <+> manageHook desktopConfig
+        { focusFollowsMouse = False
+        , terminal = "alacritty"
+        , manageHook = manageDocks <+> manageHook desktopConfig
         , layoutHook = avoidStruts $ layoutHook desktopConfig
         , logHook = dynamicLogWithPP $ xmobarPP
             { ppOutput = hPutStrLn xmproc
