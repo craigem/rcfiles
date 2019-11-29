@@ -70,7 +70,7 @@ main = do
                 )
             -- Turn on the HDMI-1 port and set it as the secondary display
             , ((mod4Mask .|. shiftMask, xK_h), spawn
-                "xrandr --output eDP-1 --auto --output HDMI-1 --primary --above eDP-1 --mode 2560x1440R"
+                "xrandr --output eDP-1 --primary --auto --output HDMI-1 --above eDP-1 --mode 2560x1440R"
                 )
             , ((0 , 0x1008FF11), spawn "amixer set Master 2%-") -- XF86AudioLowerVolume
             -- , ((mod4Mask , xK_Down), spawn "amixer set Master 2%-")
