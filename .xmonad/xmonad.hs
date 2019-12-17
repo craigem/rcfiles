@@ -13,9 +13,7 @@ import System.IO
 
 main = do
     -- Make sure that HDMI is turned off by default
-    spawn "xrandr --output HDMI1 --off"
-    spawn "xrandr --newmode \"2560x1440R\"  241.50  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync"
-    spawn "xrandr --addmode HDMI-1 2560x1440R && xrandr --output eDP-1 --auto --output HDMI-1 --primary --above eDP-1 --mode 2560x1440R"
+    spawn "xrandr --output eDP-1 --primary --output HDMI1 --off"
     -- Launch the composite manager
     spawn "xcompmgr -f -C -n -D 3"
     -- Launch xmobar as my task bar.
@@ -62,7 +60,7 @@ main = do
             , ((0, xK_Print), spawn "scrot")
             -- Turn on the eDP-1 port and set it as the primary display
             , ((mod4Mask .|. shiftMask, xK_e), spawn
-                "xrandr --output eDP-1 --primary --auto --output "
+                "xrandr --output eDP-1 --primary --auto"
                 )
             -- Turn off the HDMI port
             , ((mod4Mask .|. controlMask, xK_h), spawn
@@ -70,7 +68,7 @@ main = do
                 )
             -- Turn on the HDMI-1 port and set it as the secondary display
             , ((mod4Mask .|. shiftMask, xK_h), spawn
-                "xrandr --output eDP-1 --primary --auto --output HDMI-1 --above eDP-1 --mode 2560x1440R"
+                "xrandr --newmode \"2560x1440R\"  241.50  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync ; xrandr --addmode HDMI-1 2560x1440R ; xrandr --output eDP-1 --primary --auto --output HDMI-1 --above eDP-1 --mode 2560x1440R ; feh --bg-scale ~/Documents/Images/Posters/FuegoMilkyWay.jpg"
                 )
             , ((0 , 0x1008FF11), spawn "amixer set Master 2%-") -- XF86AudioLowerVolume
             -- , ((mod4Mask , xK_Down), spawn "amixer set Master 2%-")
