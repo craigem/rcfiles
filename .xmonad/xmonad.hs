@@ -18,8 +18,8 @@ main = do
     spawn "xcompmgr -f -C -n -D 3"
     -- Launch xmobar as my task bar.
     xmproc <- spawnPipe "xmobar /home/craige/.xmobarrc"
-    -- Launch the system tray
-    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 5 --transparent true --alpha 0 --tint 0x073642 --height 20 --monitor primary"
+    -- Launch the system tray, configured to work correctly with dual monitors
+    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --width 5 --transparent true --alpha 0 --tint 0x073642 --height 20 --monitor primary"
     -- Launch the settings daemon
     spawn "xsettingsd"
     -- Launch the screen saver
