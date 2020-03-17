@@ -1,7 +1,8 @@
 [user]
 	name = Craige McWhirter
 	email = craige@mcwhirter.io
-	signingkey = A4122FF3971B6865
+	email = craige.mcwhirter@iohk.io
+	signingkey = 0x7E66C3B5CDE94A4A
 [push]
 	default = simple
 [gitreview]
@@ -11,3 +12,8 @@
     insteadof = lp:
 [commit]
 	gpgsign = true
+[color]
+	ui = always
+#[includeIf "gitdir:~/source/IOHK/"]
+#    path = ~/.gitconfig-iohk
+
