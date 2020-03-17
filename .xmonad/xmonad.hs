@@ -33,7 +33,7 @@ main = do
     spawn "lxqt-notificationd"
     xmonad $ desktopConfig
         { focusFollowsMouse = False
-        , terminal = "alacritty"
+        , terminal = "termonad"   -- Set the default terminal
         , manageHook = manageDocks <+> manageHook desktopConfig
         , layoutHook = avoidStruts $ layoutHook desktopConfig
         , logHook = dynamicLogWithPP $ xmobarPP
