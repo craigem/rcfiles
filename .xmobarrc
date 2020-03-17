@@ -7,13 +7,14 @@ Config {
     , position = TopW L 95
 
     -- Layout
-    , sepChar = "%"
-    , alignSep = "}{"
-    , template = "%StdinReader% } %mpd% { %multicpu% %coretemp% %cpufreq% | %memory% | %battery% | %YBRK% %uv brisbane% | %date%"
+    , sepChar = "%"     -- delineator between plugin names and straight text
+    , alignSep = "}{"   -- separator between left-right alignment
+    , template = "%StdinReader% } %mpd% { %multicpu% %coretemp% %cpufreq% | %memory% | %battery% | %YBRK% | %uv Brisbane% | %date%"
 
     -- Behaviour
-    , lowerOnStart = False
-    , pickBroadest = False -- choose widest display (multi-monitor)
+    , lowerOnStart = False       -- send to bottom of window stack on start
+    , pickBroadest = False       -- choose widest display (multi-monitor)
+    , overrideRedirect = False   -- set the Override Redirect flag (Xlib)
 
     --Plugins
     , commands =
@@ -57,19 +58,22 @@ Config {
                              , "--high"     , "#2aa198"
 
                              , "--" -- battery specific options
-                             -- discharging status
-                             , "-o"   , "<left>% (<timeleft>)"
-                             -- AC "on" status
-                             , "-O" , "<fc=#2aa198>Charging</fc>"
-                             -- charged status
-                             , "-i"   , "<fc=#859900>Charged</fc>"
+                                       -- discharging status
+                                       , "-o"   , "<left>% (<timeleft>)"
+                                       -- AC "on" status
+                                       , "-O" , "<fc=#2aa198>Charging</fc>"
+                                       -- charged status
+                                       , "-i"   , "<fc=#859900>Charged</fc>"
                              ] 50
 
         -- Read from STDIN
         , Run StdinReader
 
+        -- Display the current Wireless SSID
+        -- , Run Wireless "wlp1s0" [ "-t", "<essid>" ] 10
+
         -- Weather Monitor
-        , Run Weather "YBRK" [ "--template" , " <tempC>°C"
+        , Run Weather "YBRK" [ "--template" , " <skyCondition>  <tempC>°C  <rh>%  <pressure> hPa"
                              , "--Low"      , "10"
                              , "--High"     , "35"
                              , "--low"      , "#2aa198"
@@ -81,7 +85,7 @@ Config {
         , Run Date           "<fc=#268bd2>%a %b %_d %H:%M</fc>" "date" 10
 
         -- Display the current UV
-        , Run UVMeter "brisbane" [ "-H"     , "3"
+        , Run UVMeter "Brisbane" [ "-H"     , "3"
                                  , "-L"     , "3"
                                  , "--low"  , "#859900"
                                  , "--high" , "#dc322f"
