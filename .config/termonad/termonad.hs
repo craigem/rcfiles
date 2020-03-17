@@ -134,7 +134,7 @@ fontConf =
 
 main :: IO ()
 main = do
-  -- First, create the colour extension based on either Solarixed modules.
+  -- First, create the colour extension based on either Solarized modules.
   myColourExt <- createColourExtension solarizedDark
 
   -- Update 'myTMConfig' with our colour extension.
