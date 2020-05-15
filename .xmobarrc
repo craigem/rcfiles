@@ -4,12 +4,12 @@ Config {
       font = "xft:OpenSans:size=9:antialias=true"
     , bgColor = "#073642"
     , fgColor = "#93a1a1"
-    , position = TopW L 95
+    , position = TopW L 93   -- Leave space for Trayer
 
     -- Layout
     , sepChar = "%"     -- delineator between plugin names and straight text
     , alignSep = "}{"   -- separator between left-right alignment
-    , template = "%StdinReader% } %mpd% { %multicpu% %coretemp% %cpufreq% | %memory% | %battery% | %YBRK% | %uv Brisbane% | %date%"
+    , template = "%StdinReader% } { %YBRK% | UV: %uv Brisbane% | %cpu% %coretemp% %cpufreq% | %memory% |  %swap% | %dynnetwork% | %battery% | %date%"
 
     -- Behaviour
     , lowerOnStart = False       -- send to bottom of window stack on start
@@ -19,7 +19,7 @@ Config {
     --Plugins
     , commands =
         -- CPU Activity Monitor
-        [ Run MultiCpu       [ "--template" , "CPU: <total0>%|<total2>%"
+        [ Run Cpu            [ "--template" , "CPU: <total>%"
                              , "--Low"      , "30"         -- units: %
                              , "--High"     , "70"         -- units: %
                              , "--low"      , "#2aa198"
@@ -73,7 +73,7 @@ Config {
         -- , Run Wireless "wlp1s0" [ "-t", "<essid>" ] 10
 
         -- Weather Monitor
-        , Run Weather "YBRK" [ "--template" , " <skyCondition>  <tempC>°C  <rh>%  <pressure> hPa"
+        , Run Weather "YBRK" [ "--template" , " <skyCondition>  <tempC>C  <rh>%  <pressure> hPa"
                              , "--Low"      , "10"
                              , "--High"     , "35"
                              , "--low"      , "#2aa198"
@@ -90,7 +90,17 @@ Config {
                                  , "--low"  , "#859900"
                                  , "--high" , "#dc322f"
                                  ] 900
+
         -- MPD status
         , Run MPD ["-t","<artist> - <title> (<album>) <statei> ","--", "-P", ">>", "-Z", "|", "-S", "><"] 10
+
+        , Run Swap [] 10
+        , Run DynNetwork [ "--template" , "<dev>: <tx>kB/s"
+            , "--Low"      , "50000"   -- units: B/s
+            , "--High"     , "500000"   -- units: B/s
+            , "--low"      , "#2d9574"
+            , "--normal"   , "orange"
+            , "--high"     , "red"
+            ] 10
         ]
 }
