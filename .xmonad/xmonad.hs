@@ -20,16 +20,16 @@ import XMonad.Util.SpawnOnce
 import System.IO
 
 colourBackground :: String
-colourBackground = "#073642"
+colourBackground = "#282828"
 
 colourForeground :: String
-colourForeground = "#93a1a1"
+colourForeground = "#ebdbb2"
 
 highlightBackground :: String
-highlightBackground = "#002b36"
+highlightBackground = "#1d2021"
 
 highlightForeground :: String
-highlightForeground = "#859900"
+highlightForeground = "#fabd2f"
 
 -- Set xmobar as my task bar.
 myWsBar :: String
@@ -54,7 +54,7 @@ notificationCmd = "lxqt-notificationd"
 screensaverCmd  = "xscreensaver -no-splash"
 settingsDaemon  = "xsettingsd"
 terminalCmd     = "termonad"
-trayerCmd       = "trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --width 7 --transparent true --alpha 0 --tint 0x073642 --height 20 --monitor primary"
+trayerCmd       = "trayer --edge top --align right --SetDockType true --SetPartialStrut false --expand true --width 7 --transparent true --alpha 1 --tint 0x282828 --height 20 --monitor primary"
 
 main = do
     -- Make sure that HDMI is turned off by default
