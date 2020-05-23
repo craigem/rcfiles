@@ -4,7 +4,7 @@
 module Main where
 
 import Termonad
-  ( CursorBlinkMode(CursorBlinkModeOff)
+  ( CursorBlinkMode(CursorBlinkModeOn)
   , Option(Set)
   , ShowScrollbar(ShowScrollbarNever)
   , TMConfig
@@ -49,7 +49,7 @@ myTMConfig =
           { showScrollbar = ShowScrollbarNever
           , confirmExit = False
           , showMenu = False
-          , cursorBlinkMode = CursorBlinkModeOff
+          , cursorBlinkMode = CursorBlinkModeOn
           , fontConfig = fontConf
           }
     }
